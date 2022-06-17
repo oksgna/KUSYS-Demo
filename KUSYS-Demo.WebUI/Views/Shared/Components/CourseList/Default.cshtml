@@ -1,0 +1,17 @@
+﻿@model CourseListViewModel
+
+
+<div class="list-group">
+
+    @foreach (var item in Model.Courses)
+    {
+        <a
+           asp-controller="User"
+           asp-action="List"
+           asp-route-course="@item.CourseName.ToLower()"
+           class="list-group-item list-group-item-action @(Model.SelectedCourse==item.CourseName.ToLower()?"active":"")">
+            @item.CourseName
+        </a>
+    }
+
+</div>

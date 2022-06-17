@@ -1,0 +1,55 @@
+﻿@model StudentModel
+@{
+    ViewData["Title"] = "EditStudent";
+}
+
+<h1>EditStudent</h1>
+
+
+<hr />
+ <form asp-controller="User" asp-action="Edit" method="post">
+<div class="row">
+    <div class="col-md-8">
+
+       
+              <input type="hidden" name="StudentId" value="@Model.StudentId" />
+            <div class="form-group row">
+                <label asp-for="FirstName" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="FirstName" value="@Model.FirstName" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LastName" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="LastName" value="@Model.LastName" class="form-control" />
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label asp-for="BirthDate" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="BirthDate" value="@Model.BirthDate" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Save Student</button>
+                </div>
+            </div>
+
+     
+
+    </div>
+     <div class="col-md-4">
+          @foreach (var item in (List<Course>)ViewBag.Courses)
+            {
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="courseIds" value="@item.CourseId" class="custom-control-input" id="category@(item.CourseId)" @(Model.SelectedStudentCourse.Any(i=>i.CourseId==item.CourseId)?"checked":"")>
+                    <label class="custom-control-label" for="category@(item.CourseId)">@item.CourseName</label>
+                </div>
+            }
+         </div>
+</div>
+</form>
+

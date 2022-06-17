@@ -1,0 +1,40 @@
+﻿@model StudentDetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+   
+    <div class="col-md-9">
+        <h1 class="mb-3">
+            @Model.Student.FirstName @Model.Student.LastName
+        </h1>
+        <hr />
+       
+         <div class="mb-3">
+            <h4 class="text-primary mb-3">
+                @Model.Student.StudentId
+            </h4>
+           
+        </div>
+        <div class="mb-3">
+            <h4 class="text-primary mb-3">
+                @Model.Student.BirthDate
+            </h4>
+           
+        </div>
+         @foreach (var course in Model.Courses)
+        {
+            <a href="#" class="btn btn-link p-0 mb-3">@course.CourseName</a>
+        }
+         
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="p-3">
+            
+        </p>
+    </div>
+</div>
